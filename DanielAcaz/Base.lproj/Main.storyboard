@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--View Controller-->
         <scene sceneID="1zf-yr-J3D">
             <objects>
                 <viewController id="267-nu-pSU" sceneMemberID="viewController">
@@ -20,7 +20,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="dYc-zZ-YzQ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="vcn-BS-uN6"/>
+                    <tabBarItem key="tabBarItem" id="vcn-BS-uN6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z0R-Kj-s3g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -244,11 +244,11 @@
             </objects>
             <point key="canvasLocation" x="3285.5999999999999" y="-134.48275862068968"/>
         </scene>
-        <!--Item-->
+        <!--Compras-->
         <scene sceneID="idr-W0-Bxq">
             <objects>
                 <navigationController id="D1B-Dn-FWB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="jaP-y0-7hR"/>
+                    <tabBarItem key="tabBarItem" title="Compras" image="shopping" id="jaP-y0-7hR"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9pn-5m-Y9m">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -281,4 +281,7 @@
             <point key="canvasLocation" x="-209" y="222"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="shopping" width="21" height="21"/>
+    </resources>
 </document>
