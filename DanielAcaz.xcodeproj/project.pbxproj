@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5613F9892096154000868163 /* ShoppingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5613F9882096154000868163 /* ShoppingTableViewController.swift */; };
+		5613F98D2096191100868163 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5613F98C2096191100868163 /* UIViewControllerExtension.swift */; };
+		5613F98F209620B500868163 /* ShoppingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5613F98E209620B500868163 /* ShoppingTableViewCell.swift */; };
+		5613F99220962D0300868163 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5613F99120962D0300868163 /* ProductViewController.swift */; };
 		ACED0EE2208E988C00D8E654 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACED0EE1208E988C00D8E654 /* AppDelegate.swift */; };
 		ACED0EE4208E988C00D8E654 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACED0EE3208E988C00D8E654 /* ViewController.swift */; };
 		ACED0EE7208E988C00D8E654 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACED0EE5208E988C00D8E654 /* Main.storyboard */; };
@@ -16,6 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5613F9882096154000868163 /* ShoppingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewController.swift; sourceTree = "<group>"; };
+		5613F98C2096191100868163 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		5613F98E209620B500868163 /* ShoppingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewCell.swift; sourceTree = "<group>"; };
+		5613F99120962D0300868163 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		ACED0EDE208E988C00D8E654 /* DanielAcaz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanielAcaz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACED0EE1208E988C00D8E654 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACED0EE3208E988C00D8E654 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -37,6 +45,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5613F98A209618C200868163 /* Shopping */ = {
+			isa = PBXGroup;
+			children = (
+				5613F9882096154000868163 /* ShoppingTableViewController.swift */,
+				5613F98E209620B500868163 /* ShoppingTableViewCell.swift */,
+			);
+			path = Shopping;
+			sourceTree = "<group>";
+		};
+		5613F98B209618DE00868163 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5613F98C2096191100868163 /* UIViewControllerExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5613F99020962CE300868163 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				5613F99120962D0300868163 /* ProductViewController.swift */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
 		ACED0ED5208E988B00D8E654 = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +89,9 @@
 		ACED0EE0208E988C00D8E654 /* DanielAcaz */ = {
 			isa = PBXGroup;
 			children = (
+				5613F99020962CE300868163 /* Product */,
+				5613F98B209618DE00868163 /* Extensions */,
+				5613F98A209618C200868163 /* Shopping */,
 				ACED0EE1208E988C00D8E654 /* AppDelegate.swift */,
 				ACED0EE3208E988C00D8E654 /* ViewController.swift */,
 				ACED0EE5208E988C00D8E654 /* Main.storyboard */,
@@ -140,6 +176,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACED0EEA208E988C00D8E654 /* DanielAcaz.xcdatamodeld in Sources */,
+				5613F98F209620B500868163 /* ShoppingTableViewCell.swift in Sources */,
+				5613F9892096154000868163 /* ShoppingTableViewController.swift in Sources */,
+				5613F99220962D0300868163 /* ProductViewController.swift in Sources */,
+				5613F98D2096191100868163 /* UIViewControllerExtension.swift in Sources */,
 				ACED0EE4208E988C00D8E654 /* ViewController.swift in Sources */,
 				ACED0EE2208E988C00D8E654 /* AppDelegate.swift in Sources */,
 			);
