@@ -4,6 +4,10 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Preciso de permissão para acessar sua câmera</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Preciso de permissão para acessar suas fotos</string>
 	<key>CFBundleDisplayName</key>
 	<string>ComprasUSA</string>
 	<key>CFBundleExecutable</key>
