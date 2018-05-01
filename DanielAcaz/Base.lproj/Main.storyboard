@@ -13,6 +13,7 @@
         <!--View Controller-->
         <scene sceneID="1zf-yr-J3D">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z0R-Kj-s3g" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="267-nu-pSU" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Emw-fn-g01">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -22,19 +23,25 @@
                     </view>
                     <tabBarItem key="tabBarItem" id="vcn-BS-uN6"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Z0R-Kj-s3g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-210" y="1038"/>
         </scene>
-        <!--Item 1-->
-        <scene sceneID="PL8-0a-Doi">
+        <!--Ajuste-->
+        <scene sceneID="Agh-2O-h9Z">
             <objects>
-                <viewController id="ksi-Zd-rob" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="8Wu-fl-BBC"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Rlb-Yw-JuR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2CL-uL-kQn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="Vmf-9i-1pW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Ajuste" image="adjusts" id="1I3-KV-5jI"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kFs-tc-B6V">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="0l9-Za-luL" kind="relationship" relationship="rootViewController" id="dUM-Gx-KsN"/>
+                    </connections>
+                </navigationController>
             </objects>
-            <point key="canvasLocation" x="566" y="1038"/>
+            <point key="canvasLocation" x="652" y="1038"/>
         </scene>
         <!--Lista de Compras-->
         <scene sceneID="o3s-hx-eHV">
@@ -231,10 +238,10 @@
             </objects>
             <point key="canvasLocation" x="2405.5999999999999" y="-134.48275862068968"/>
         </scene>
-        <!--View Controller-->
+        <!--State View Controller-->
         <scene sceneID="Pl0-ip-f5A">
             <objects>
-                <viewController id="0l9-Za-luL" sceneMemberID="viewController">
+                <viewController id="0l9-Za-luL" customClass="StateViewController" customModule="DanielAcaz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2nQ-mc-mYn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -279,10 +286,23 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ka7-2J-I3p">
                                 <rect key="frame" x="0.0" y="230" width="375" height="299"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="stateCell" id="hbf-vm-0yC">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hbf-vm-0yC" id="Nmm-ft-yPs">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kI0-f3-XrP">
                                 <rect key="frame" x="244" y="537" width="115" height="30"/>
                                 <state key="normal" title="Adicionar estado"/>
+                                <connections>
+                                    <action selector="btAddStateAction:" destination="0l9-Za-luL" eventType="touchUpInside" id="uzy-4F-0fT"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -307,10 +327,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zPW-bZ-f9x"/>
                     </view>
+                    <navigationItem key="navigationItem" id="fB3-Pt-wm4"/>
+                    <connections>
+                        <outlet property="tfDolar" destination="wiW-Ad-UqE" id="gkp-n8-W3M"/>
+                        <outlet property="tfIOF" destination="tAc-go-c4g" id="kUz-3P-pAn"/>
+                        <outlet property="tvStateList" destination="Ka7-2J-I3p" id="gbS-i2-yuV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hc8-ji-MXv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3285.5999999999999" y="-134.48275862068968"/>
+            <point key="canvasLocation" x="2406" y="1038"/>
         </scene>
         <!--Compras-->
         <scene sceneID="idr-W0-Bxq">
@@ -341,7 +367,7 @@
                     <connections>
                         <segue destination="D1B-Dn-FWB" kind="relationship" relationship="viewControllers" id="Jhg-Ec-fOS"/>
                         <segue destination="267-nu-pSU" kind="relationship" relationship="viewControllers" id="QeX-OT-xO2"/>
-                        <segue destination="ksi-Zd-rob" kind="relationship" relationship="viewControllers" id="PJ8-Wa-LAh"/>
+                        <segue destination="Vmf-9i-1pW" kind="relationship" relationship="viewControllers" id="osL-xI-8x0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="37k-T3-np7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -350,10 +376,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="adjusts" width="16" height="16"/>
         <image name="gift" width="128" height="128"/>
         <image name="shopping" width="21" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="dUM-Gx-KsN"/>
         <segue reference="bmd-LW-1cI"/>
     </inferredMetricsTieBreakers>
 </document>

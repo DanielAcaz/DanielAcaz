@@ -21,7 +21,6 @@ class ProductViewController: UIViewController {
     var miniImage: UIImage!
     var pickerView: UIPickerView!
     var fetchedResultController: NSFetchedResultsController<State>!
-    var dataSource:[String] = ["Ação", "Comédia", "Drama", "Suspense", "Terror"]
     
     //MARK: - Override Methods
     
@@ -149,8 +148,8 @@ class ProductViewController: UIViewController {
     }
 
     @objc func done() {
-        
-        tfState.text = dataSource[pickerView.selectedRow(inComponent: 0)]
+        let indexPath = IndexPath(row: pickerView.selectedRow(inComponent: 0), section: 0)
+        tfState.text = fetchedResultController.object(at: indexPath).name
         UserDefaults.standard.set(tfState.text!, forKey: "genre")
         cancel()
         
