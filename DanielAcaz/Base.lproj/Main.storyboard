@@ -230,9 +230,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UpQ-dm-QWM">
                                 <rect key="frame" x="16" y="410" width="343" height="30"/>
                                 <color key="backgroundColor" red="0.21376248537730069" green="0.44974382530755619" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="343" id="cHT-MU-MQu"/>
-                                </constraints>
                                 <state key="normal" title="Cadastrar">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -258,9 +255,11 @@
                             <constraint firstItem="DiH-bN-q4T" firstAttribute="trailing" secondItem="zhj-Sg-4dA" secondAttribute="trailing" constant="16" id="8Nv-tW-9yg"/>
                             <constraint firstItem="B83-Wf-Cpj" firstAttribute="leading" secondItem="dme-6L-dQ7" secondAttribute="trailing" constant="8" id="EiC-qy-UDe"/>
                             <constraint firstItem="UpQ-dm-QWM" firstAttribute="top" secondItem="DZw-Dj-jTx" secondAttribute="bottom" constant="20" id="FZK-KY-nrj"/>
+                            <constraint firstItem="UpQ-dm-QWM" firstAttribute="leading" secondItem="DiH-bN-q4T" secondAttribute="leading" constant="16" id="HRQ-Xu-R3z"/>
                             <constraint firstItem="CgN-7d-byq" firstAttribute="leading" secondItem="DiH-bN-q4T" secondAttribute="leading" constant="16" id="K5u-op-mhb"/>
                             <constraint firstItem="DZw-Dj-jTx" firstAttribute="top" secondItem="dme-6L-dQ7" secondAttribute="bottom" constant="20" id="OeA-Fp-cw3"/>
                             <constraint firstItem="DiH-bN-q4T" firstAttribute="trailing" secondItem="CgN-7d-byq" secondAttribute="trailing" constant="16" id="PvV-le-ufZ"/>
+                            <constraint firstItem="DiH-bN-q4T" firstAttribute="trailing" secondItem="UpQ-dm-QWM" secondAttribute="trailing" constant="16" id="Q2v-0i-yFf"/>
                             <constraint firstItem="zhj-Sg-4dA" firstAttribute="top" secondItem="DiH-bN-q4T" secondAttribute="top" constant="70" id="bkO-lR-Gas"/>
                             <constraint firstItem="DZw-Dj-jTx" firstAttribute="leading" secondItem="zhj-Sg-4dA" secondAttribute="leading" id="bqL-UI-Oc0"/>
                             <constraint firstItem="KYi-JB-fbJ" firstAttribute="leading" secondItem="zhj-Sg-4dA" secondAttribute="leading" id="fI7-jf-xt8"/>
