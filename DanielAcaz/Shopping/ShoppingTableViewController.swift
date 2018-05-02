@@ -16,11 +16,11 @@ class ShoppingTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.estimatedRowHeight = 150
+        tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
         labelEmptyList.text = "Sua Lista está vazia!"
         labelEmptyList.textAlignment = .center
-        labelEmptyList.textColor = .white
+        labelEmptyList.textColor = .black
         
         listShoppings()
         
@@ -41,9 +41,11 @@ class ShoppingTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = fetchedResultController.fetchedObjects?.count {
             tableView.backgroundView = (count == 0) ? labelEmptyList : nil
+            tableView.separatorStyle = (count == 0) ? UITableViewCellSeparatorStyle.none : UITableViewCellSeparatorStyle.singleLine
             return count
         } else {
             tableView.backgroundView = labelEmptyList
+            tableView.separatorStyle = UITableViewCellSeparatorStyle.none 
             return 0
         }
     }
@@ -76,8 +78,12 @@ class ShoppingTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let viewController = segue.destination as? ProductViewController, let sourceViewController = segue.source as? ShoppingTableViewCell {
-            viewController.product = fetchedResultController.object(at: tableView.indexPathForSelectedRow!)
+        if let viewController = segue.destination as? ProductViewController {
+            if let index = tableView.indexPathForSelectedRow {
+                viewController.product = fetchedResultController.object(at: index)
+            } else {
+                viewController.product = nil
+            }
         }
     }
     //MARK: - My Methods
@@ -87,6 +93,7 @@ class ShoppingTableViewController: UITableViewController {
         fetchRequest.sortDescriptors = [sortDescriptor]
         fetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultController.delegate = self
+        
         do {
             try fetchedResultController.performFetch()
         } catch {

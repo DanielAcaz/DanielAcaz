@@ -11,10 +11,11 @@
 		5613F98D2096191100868163 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5613F98C2096191100868163 /* UIViewControllerExtension.swift */; };
 		5613F98F209620B500868163 /* ShoppingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5613F98E209620B500868163 /* ShoppingTableViewCell.swift */; };
 		5613F99220962D0300868163 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5613F99120962D0300868163 /* ProductViewController.swift */; };
+		564363F22098B0F00008E7C8 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 564363F12098B0F00008E7C8 /* Settings.bundle */; };
+		564363F52098B7BC0008E7C8 /* TotalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564363F42098B7BC0008E7C8 /* TotalViewController.swift */; };
 		566EBCE2209801C4003FBCEA /* StateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566EBCE1209801C4003FBCEA /* StateViewController.swift */; };
 		566EBCE6209809B2003FBCEA /* ProductExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566EBCE5209809B2003FBCEA /* ProductExtensions.swift */; };
 		ACED0EE2208E988C00D8E654 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACED0EE1208E988C00D8E654 /* AppDelegate.swift */; };
-		ACED0EE4208E988C00D8E654 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACED0EE3208E988C00D8E654 /* ViewController.swift */; };
 		ACED0EE7208E988C00D8E654 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACED0EE5208E988C00D8E654 /* Main.storyboard */; };
 		ACED0EEA208E988C00D8E654 /* DanielAcaz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ACED0EE8208E988C00D8E654 /* DanielAcaz.xcdatamodeld */; };
 		ACED0EEC208E988C00D8E654 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACED0EEB208E988C00D8E654 /* Assets.xcassets */; };
@@ -22,15 +23,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5613F9882096154000868163 /* ShoppingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewController.swift; sourceTree = "<group>"; };
+		5613F9882096154000868163 /* ShoppingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewController.swift; sourceTree = "<group>"; };
 		5613F98C2096191100868163 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		5613F98E209620B500868163 /* ShoppingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewCell.swift; sourceTree = "<group>"; };
 		5613F99120962D0300868163 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
+		564363F12098B0F00008E7C8 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		564363F42098B7BC0008E7C8 /* TotalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalViewController.swift; sourceTree = "<group>"; };
 		566EBCE1209801C4003FBCEA /* StateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateViewController.swift; sourceTree = "<group>"; };
 		566EBCE5209809B2003FBCEA /* ProductExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductExtensions.swift; sourceTree = "<group>"; };
 		ACED0EDE208E988C00D8E654 /* DanielAcaz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanielAcaz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACED0EE1208E988C00D8E654 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ACED0EE3208E988C00D8E654 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ACED0EE6208E988C00D8E654 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ACED0EE9208E988C00D8E654 /* DanielAcaz.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DanielAcaz.xcdatamodel; sourceTree = "<group>"; };
 		ACED0EEB208E988C00D8E654 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 			children = (
 				5613F9882096154000868163 /* ShoppingTableViewController.swift */,
 				5613F98E209620B500868163 /* ShoppingTableViewCell.swift */,
+				564363F12098B0F00008E7C8 /* Settings.bundle */,
 			);
 			path = Shopping;
 			sourceTree = "<group>";
@@ -73,6 +76,14 @@
 				5613F99120962D0300868163 /* ProductViewController.swift */,
 			);
 			path = Product;
+			sourceTree = "<group>";
+		};
+		564363F32098B7870008E7C8 /* Total */ = {
+			isa = PBXGroup;
+			children = (
+				564363F42098B7BC0008E7C8 /* TotalViewController.swift */,
+			);
+			path = Total;
 			sourceTree = "<group>";
 		};
 		566EBCE0209801A5003FBCEA /* State */ = {
@@ -102,12 +113,12 @@
 		ACED0EE0208E988C00D8E654 /* DanielAcaz */ = {
 			isa = PBXGroup;
 			children = (
+				564363F32098B7870008E7C8 /* Total */,
 				566EBCE0209801A5003FBCEA /* State */,
 				5613F99020962CE300868163 /* Product */,
 				5613F98B209618DE00868163 /* Extensions */,
 				5613F98A209618C200868163 /* Shopping */,
 				ACED0EE1208E988C00D8E654 /* AppDelegate.swift */,
-				ACED0EE3208E988C00D8E654 /* ViewController.swift */,
 				ACED0EE5208E988C00D8E654 /* Main.storyboard */,
 				ACED0EEB208E988C00D8E654 /* Assets.xcassets */,
 				ACED0EED208E988C00D8E654 /* LaunchScreen.storyboard */,
@@ -176,6 +187,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				564363F22098B0F00008E7C8 /* Settings.bundle in Resources */,
 				ACED0EEF208E988C00D8E654 /* LaunchScreen.storyboard in Resources */,
 				ACED0EEC208E988C00D8E654 /* Assets.xcassets in Resources */,
 				ACED0EE7208E988C00D8E654 /* Main.storyboard in Resources */,
@@ -196,8 +208,8 @@
 				5613F99220962D0300868163 /* ProductViewController.swift in Sources */,
 				566EBCE2209801C4003FBCEA /* StateViewController.swift in Sources */,
 				5613F98D2096191100868163 /* UIViewControllerExtension.swift in Sources */,
-				ACED0EE4208E988C00D8E654 /* ViewController.swift in Sources */,
 				ACED0EE2208E988C00D8E654 /* AppDelegate.swift in Sources */,
+				564363F52098B7BC0008E7C8 /* TotalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +347,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZBHV2GKSJ7;
 				INFOPLIST_FILE = DanielAcaz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.fiap.14mob.DanielAcaz;
@@ -349,6 +362,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZBHV2GKSJ7;
 				INFOPLIST_FILE = DanielAcaz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.fiap.14mob.DanielAcaz;

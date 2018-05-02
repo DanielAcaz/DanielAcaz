@@ -20,9 +20,19 @@ class StateViewController: UIViewController {
     @IBOutlet weak var tfDolar: UITextField!
     @IBOutlet weak var tfIOF: UITextField!
     @IBOutlet weak var tvStateList: UITableView!
+    @IBOutlet weak var niReturnProduct: UINavigationItem!
     
     var dataSource: [State] = []
     var product: Product!
+    var labelEmptyList = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 22))
+    
+    //MARK: - Override Methods
+    
+    override func performSegue(withIdentifier identifier: String, sender: Any?) {
+        if(identifier == "addState"){
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,22 +41,21 @@ class StateViewController: UIViewController {
         loadStates()
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tfDolar.text = UserDefaults.standard.string(forKey: "dolar")
+        tfIOF.text = UserDefaults.standard.string(forKey: "iof")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        UserDefaults.standard.set(tfDolar.text, forKey: "dolar")
+        UserDefaults.standard.set(tfIOF.text, forKey: "iof")
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: - My Methods
     func loadStates() {
@@ -79,6 +88,7 @@ class StateViewController: UIViewController {
         alert.addAction(UIAlertAction(title: title, style: .default, handler: { (action: UIAlertAction) in
             let state = state ?? State(context: self.context)
             state.name = alert.textFields?.first?.text
+            state.tax = Double(alert.textFields?.last?.text ?? "0")!
             do {
                 try self.context.save()
                 self.loadStates()
@@ -125,13 +135,28 @@ extension StateViewController: UITableViewDelegate {
 extension StateViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        if dataSource.count == 0 {
+            labelEmptyList.isHidden = false
+            labelEmptyList.text = "Lista de estado vazia"
+            labelEmptyList.textAlignment = .center
+            labelEmptyList.textColor = .black
+            tableView.backgroundView = labelEmptyList
+            tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+            return 0
+        } else {
+            labelEmptyList.isHidden = true
+            tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
+            return dataSource.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "stateCell", for: indexPath)
         let state = dataSource[indexPath.row]
         cell.textLabel?.text = state.name
+        cell.detailTextLabel?.text = String(state.tax)
+        cell.detailTextLabel?.textColor = UIColor.red
+        
        return cell
     }
 }

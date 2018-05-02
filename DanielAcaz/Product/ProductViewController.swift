@@ -16,11 +16,15 @@ class ProductViewController: UIViewController {
     @IBOutlet weak var ivImage: UIImageView!
     @IBOutlet weak var tfState: UITextField!
     @IBOutlet weak var tfPrice: UITextField!
+    @IBOutlet weak var swPayCard: UISwitch!
+    @IBOutlet weak var btSave: UIButton!
+    @IBOutlet weak var niBack: UINavigationItem!
     
     var product: Product!
+    var state: State!
     var miniImage: UIImage!
     var pickerView: UIPickerView!
-    var fetchedResultController: NSFetchedResultsController<State>!
+    var fetchedResultController: NSFetchedResultsController<State>?
     
     //MARK: - Override Methods
     
@@ -47,11 +51,15 @@ class ProductViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if product != nil {
+            btSave.setTitle("Atualizar", for: .normal)
             tfName.text = product.name
             tfPrice.text = String(product.price)
+            swPayCard.setOn(product.payCard, animated: true)
             
             if let states = product.states {
                 tfState.text = states.name
+                state = states
+                
             }
             
             if let image = product.image as? UIImage {
@@ -99,7 +107,8 @@ class ProductViewController: UIViewController {
         
         product.name = tfName.text
         product.price = Double(tfPrice.text!)!
-        product.states?.name = tfState.text
+        product.states = state
+        product.payCard = swPayCard.isOn
         if miniImage != nil {
             product.image = miniImage
         }
@@ -109,9 +118,11 @@ class ProductViewController: UIViewController {
             print(error.localizedDescription)
         }
         
-        dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
         
     }
+    
+    
     
     // MARK: My Methods
     func selectPicture(sourceType: UIImagePickerControllerSourceType) {
@@ -136,10 +147,7 @@ class ProductViewController: UIViewController {
         let btDone = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
         toolbar.items = [btCancel, btSpace, btDone]
         
-        //Aqui definimos que o pickerView será usado como entrada do extField
         tfState.inputView = pickerView
-        
-        //Definindo a toolbar como view de apoio do textField (view que fica acima do teclado)
         tfState.inputAccessoryView = toolbar
     }
     
@@ -149,8 +157,12 @@ class ProductViewController: UIViewController {
 
     @objc func done() {
         let indexPath = IndexPath(row: pickerView.selectedRow(inComponent: 0), section: 0)
-        tfState.text = fetchedResultController.object(at: indexPath).name
-        UserDefaults.standard.set(tfState.text!, forKey: "genre")
+        if (fetchedResultController?.fetchedObjects?.count)! > 0 {
+            tfState.text = fetchedResultController?.object(at: indexPath).name
+            state = fetchedResultController?.object(at: indexPath)
+            UserDefaults.standard.set(tfState.text, forKey: "genre")
+        }
+        
         cancel()
         
     }
@@ -161,9 +173,9 @@ class ProductViewController: UIViewController {
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         fetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultController.delegate = self
+        fetchedResultController?.delegate = self
         do {
-            try fetchedResultController.performFetch()
+            try fetchedResultController?.performFetch()
         } catch {
             print(error.localizedDescription)
         }
@@ -193,7 +205,8 @@ extension ProductViewController: UIPickerViewDataSource {
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if let count = fetchedResultController.fetchedObjects?.count {
+        
+        if let count = fetchedResultController?.fetchedObjects?.count {
             return count
         } else {
             return 0
@@ -204,14 +217,13 @@ extension ProductViewController: UIPickerViewDataSource {
 extension ProductViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let indexPath = IndexPath(row: row, section: 0)
-        let product = fetchedResultController.object(at: indexPath)
-        return product.name
+        return fetchedResultController?.object(at: indexPath).name
     }
 }
 
 extension ProductViewController: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        
+    
     }
 }
 
