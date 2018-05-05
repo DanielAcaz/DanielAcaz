@@ -40,7 +40,6 @@ class ProductViewController: UIViewController {
         
         loadStates()
         createPickerView()
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,7 +55,7 @@ class ProductViewController: UIViewController {
             tfPrice.text = String(product.price)
             swPayCard.setOn(product.payCard, animated: true)
             
-            if let states = product.states {
+            if let states = product.state {
                 tfState.text = states.name
                 state = states
                 
@@ -67,6 +66,10 @@ class ProductViewController: UIViewController {
             }
         }
     
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 
     //MARK - IBActions
@@ -94,31 +97,43 @@ class ProductViewController: UIViewController {
         
         let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
-        
         present(alert, animated: true, completion: nil)
         
     }
     
     
     @IBAction func btSaveProductAction(_ sender: Any) {
-        if product == nil {
-            product = Product(context: context)
-        }
         
-        product.name = tfName.text
-        product.price = Double(tfPrice.text!)!
-        product.states = state
-        product.payCard = swPayCard.isOn
-        if miniImage != nil {
-            product.image = miniImage
+        if (tfName.text?.isEmpty)! || (tfPrice.text?.isEmpty)! || (tfState.text?.isEmpty)! {
+            
+            tfName.alertIfEmpty()
+            tfPrice.alertIfEmpty()
+            tfState.alertIfEmpty()
+            
+        } else {
+            
+            if product == nil {
+                product = Product(context: context)
+            }
+            
+            product.name = tfName.text
+            product.price = numberValidation(tfPrice)
+            product.state = state
+            product.payCard = swPayCard.isOn
+            if miniImage != nil {
+                product.image = miniImage
+            } /*else {
+                product.image = #imageLiteral(resourceName: "gift")
+            }*/
+            do {
+                try context.save()
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+            self.navigationController?.popViewController(animated: true)
+            
         }
-        do {
-            try context.save()
-        } catch {
-            print(error.localizedDescription)
-        }
-        
-        self.navigationController?.popViewController(animated: true)
         
     }
     
@@ -161,6 +176,7 @@ class ProductViewController: UIViewController {
             tfState.text = fetchedResultController?.object(at: indexPath).name
             state = fetchedResultController?.object(at: indexPath)
             UserDefaults.standard.set(tfState.text, forKey: "genre")
+            tfPrice.becomeFirstResponder()
         }
         
         cancel()
@@ -226,6 +242,18 @@ extension ProductViewController: NSFetchedResultsControllerDelegate {
     
     }
 }
+
+extension ProductViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == tfName {
+            tfState.becomeFirstResponder()
+        } else if textField == tfPrice {
+            view.endEditing(true)
+        }
+        return true
+    }
+}
+
 
 
 

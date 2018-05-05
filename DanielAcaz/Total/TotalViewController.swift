@@ -39,7 +39,7 @@ class TotalViewController: UIViewController {
         guard let prodcuts = fetchedResultController.fetchedObjects else { return }
         for product in prodcuts {
             totalValueDolar += product.price
-            let tax = product.states?.tax ?? 0.0
+            let tax = product.state?.tax ?? 0.0
             var iof = 0.0
             if product.payCard {
                 iof = UserDefaults.standard.double(forKey: "iof")

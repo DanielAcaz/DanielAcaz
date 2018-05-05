@@ -16,5 +16,17 @@ extension UIViewController {
     var context: NSManagedObjectContext {
         return appDelegate.persistentContainer.viewContext
     }
+    
+    func numberValidation(_ textNumber: UITextField) -> Double {
+        if let number = Double(textNumber.text!) {
+            return number
+        } else {
+            textNumber.text = ""
+            let alert = UIAlertController(title: "Numero Inválido", message: "Por favor, preencha com um valor válido", preferredStyle: .alert)
+            present(alert, animated: true, completion: {sleep(1)})
+            alert.dismiss(animated: true, completion: nil)
+            return 0.0
+        }
+    }
 }
 
