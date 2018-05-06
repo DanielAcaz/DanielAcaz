@@ -16,6 +16,7 @@
 		564363F52098B7BC0008E7C8 /* TotalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564363F42098B7BC0008E7C8 /* TotalViewController.swift */; };
 		566EBCE2209801C4003FBCEA /* StateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566EBCE1209801C4003FBCEA /* StateViewController.swift */; };
 		566EBCE6209809B2003FBCEA /* ProductExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566EBCE5209809B2003FBCEA /* ProductExtension.swift */; };
+		56F46897209F510A00479665 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F46896209F510A00479665 /* DoubleExtension.swift */; };
 		ACED0EE2208E988C00D8E654 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACED0EE1208E988C00D8E654 /* AppDelegate.swift */; };
 		ACED0EE7208E988C00D8E654 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACED0EE5208E988C00D8E654 /* Main.storyboard */; };
 		ACED0EEA208E988C00D8E654 /* DanielAcaz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ACED0EE8208E988C00D8E654 /* DanielAcaz.xcdatamodeld */; };
@@ -33,6 +34,7 @@
 		564363F42098B7BC0008E7C8 /* TotalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalViewController.swift; sourceTree = "<group>"; };
 		566EBCE1209801C4003FBCEA /* StateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateViewController.swift; sourceTree = "<group>"; };
 		566EBCE5209809B2003FBCEA /* ProductExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductExtension.swift; sourceTree = "<group>"; };
+		56F46896209F510A00479665 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		ACED0EDE208E988C00D8E654 /* DanielAcaz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanielAcaz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACED0EE1208E988C00D8E654 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACED0EE6208E988C00D8E654 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				5613F98C2096191100868163 /* UIViewControllerExtension.swift */,
 				566EBCE5209809B2003FBCEA /* ProductExtension.swift */,
 				560B7BC5209D298D00B57E62 /* UITextFieldExtension.swift */,
+				56F46896209F510A00479665 /* DoubleExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				ACED0EEA208E988C00D8E654 /* DanielAcaz.xcdatamodeld in Sources */,
 				5613F98F209620B500868163 /* ShoppingTableViewCell.swift in Sources */,
 				5613F9892096154000868163 /* ShoppingTableViewController.swift in Sources */,
+				56F46897209F510A00479665 /* DoubleExtension.swift in Sources */,
 				566EBCE6209809B2003FBCEA /* ProductExtension.swift in Sources */,
 				5613F99220962D0300868163 /* ProductViewController.swift in Sources */,
 				566EBCE2209801C4003FBCEA /* StateViewController.swift in Sources */,

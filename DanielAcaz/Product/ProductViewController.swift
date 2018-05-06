@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Photos
 
 class ProductViewController: UIViewController {
 
@@ -61,9 +62,15 @@ class ProductViewController: UIViewController {
                 
             }
             
-            if let image = product.image as? UIImage {
-                ivImage.image = image
+            if miniImage != nil {
+                ivImage.image = miniImage
+            } else {
+                if let image = product.image as? UIImage {
+                    ivImage.image = image
+                }
             }
+        } else  if miniImage != nil {
+            ivImage.image = miniImage
         }
     
     }
@@ -76,28 +83,32 @@ class ProductViewController: UIViewController {
 
     @IBAction func btImageAction(_ sender: Any) {
         
-        let alert = UIAlertController(title: "Escolher Imagem", message: "Onde está a imagem do produto?", preferredStyle: .actionSheet)
+        if checkPermission() {
         
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            let cameraAction = UIAlertAction(title: "Câmera", style: .default, handler: { (action: UIAlertAction) in
-                self.selectPicture(sourceType: .camera)
-            })
-            alert.addAction(cameraAction)
+            let alert = UIAlertController(title: "Escolher Imagem", message: "Onde está a imagem do produto?", preferredStyle: .actionSheet)
+            
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                let cameraAction = UIAlertAction(title: "Câmera", style: .default, handler: { (action: UIAlertAction) in
+                    self.selectPicture(sourceType: .camera)
+                })
+                alert.addAction(cameraAction)
+            }
+            
+            let libraryAction = UIAlertAction(title: "Biblioteca", style: .default) { (action: UIAlertAction) in
+                self.selectPicture(sourceType: .photoLibrary)
+            }
+            alert.addAction(libraryAction)
+            
+            let albumAction = UIAlertAction(title: "Álbum", style: .default) { (action: UIAlertAction) in
+                self.selectPicture(sourceType: .savedPhotosAlbum)
+            }
+            alert.addAction(albumAction)
+            
+            let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+            alert.addAction(cancelAction)
+            present(alert, animated: true, completion: nil)
+        
         }
-        
-        let libraryAction = UIAlertAction(title: "Biblioteca", style: .default) { (action: UIAlertAction) in
-            self.selectPicture(sourceType: .photoLibrary)
-        }
-        alert.addAction(libraryAction)
-        
-        let albumAction = UIAlertAction(title: "Álbum", style: .default) { (action: UIAlertAction) in
-            self.selectPicture(sourceType: .savedPhotosAlbum)
-        }
-        alert.addAction(albumAction)
-        
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
-        alert.addAction(cancelAction)
-        present(alert, animated: true, completion: nil)
         
     }
     
@@ -122,9 +133,9 @@ class ProductViewController: UIViewController {
             product.payCard = swPayCard.isOn
             if miniImage != nil {
                 product.image = miniImage
-            } /*else {
+            } else {
                 product.image = #imageLiteral(resourceName: "gift")
-            }*/
+            }
             do {
                 try context.save()
             } catch {
@@ -166,6 +177,34 @@ class ProductViewController: UIViewController {
         tfState.inputAccessoryView = toolbar
     }
     
+    func checkPermission() -> Bool {
+
+        let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
+        switch photoAuthorizationStatus {
+        
+        case .authorized:
+            print("Access is granted by user")
+            return true
+        case .notDetermined:
+            var autorization = false
+            PHPhotoLibrary.requestAuthorization { (newStatus) in
+                print("Status is \(newStatus)")
+                
+                if newStatus == PHAuthorizationStatus.authorized {
+                    print("success")
+                    autorization = true
+                }
+            }
+            return autorization
+        case .restricted:
+            print("User do not have access to photo album.")
+            return false
+        case .denied:
+            print("User has denied the permission.")
+            return false
+        }
+    }
+    
     @objc func cancel() {
         tfState.resignFirstResponder()
     }
@@ -175,7 +214,7 @@ class ProductViewController: UIViewController {
         if (fetchedResultController?.fetchedObjects?.count)! > 0 {
             tfState.text = fetchedResultController?.object(at: indexPath).name
             state = fetchedResultController?.object(at: indexPath)
-            UserDefaults.standard.set(tfState.text, forKey: "genre")
+            UserDefaults.standard.set(tfState.text, forKey: "state")
             tfPrice.becomeFirstResponder()
         }
         
@@ -209,8 +248,6 @@ extension ProductViewController: UIImagePickerControllerDelegate, UINavigationCo
         
         miniImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
-        ivImage.image = miniImage
 
         dismiss(animated: true, completion: nil)
     }

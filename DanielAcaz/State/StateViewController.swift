@@ -149,7 +149,6 @@ extension StateViewController: UITableViewDelegate {
     }
 }
 
-// MARK: - Extensions
 extension StateViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

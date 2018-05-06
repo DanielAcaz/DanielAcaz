@@ -55,7 +55,7 @@ class ShoppingTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "shoppingCell", for: indexPath) as! ShoppingTableViewCell
         let product = fetchedResultController.object(at: indexPath)
         cell.lbName.text = product.name
-        cell.lbPrice.text = String(product.price)
+        cell.lbPrice.text = product.price.toCurrencyString(forLocale: .EN, useSymbol: true)
         if let image = product.image as? UIImage {
             cell.ivImage.image = image
         } else {
